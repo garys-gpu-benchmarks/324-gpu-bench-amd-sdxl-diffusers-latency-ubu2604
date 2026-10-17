@@ -17,7 +17,7 @@ Results are written to `results/benchmark.db` and `results/summary.json`.
 
 This workload is executed on the validation host after the repository is copied there. `setup.sh` and `run_benchmark.sh` do not open an outbound SSH session.
 
-Prerequisites: Ubuntu 26.04; AMD; Python 3.14.4; root or sudo for `setup.sh`. Framework: Bash, SQLite, Python, PyYAML, ROCm Runtime, PyTorch-ROCm, Hugging Face diffusers, Stable Diffusion XL. Set HF_TOKEN when the model license requires a Hugging Face token. This is a host benchmark, not a laptop `pip install` project.
+Prerequisites: Ubuntu 26.04; AMD; Python 3.14.N (uv-managed; all benchmark venvs; same build as 24.04). System python3.14 retained for OS and setup scripts only; root or sudo for `setup.sh`. Framework: Bash, SQLite, Python, PyYAML, ROCm Runtime, PyTorch-ROCm, Hugging Face diffusers, Stable Diffusion XL. Set HF_TOKEN when the model license requires a Hugging Face token. This is a host benchmark, not a laptop `pip install` project.
 
 ```mermaid
 flowchart LR
@@ -111,7 +111,7 @@ Runs scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stabl
 - OS: Ubuntu 26.04
 - GPU vendor: AMD
 - Framework family: Bash, SQLite, Python, PyYAML, ROCm Runtime, PyTorch-ROCm, Hugging Face diffusers, Stable Diffusion XL
-- Python: Python 3.14.4
+- Python: Python 3.14.N (uv-managed; all benchmark venvs; same build as 24.04). System python3.14 retained for OS and setup scripts only
 
 ### Reference validation environment
 
@@ -131,9 +131,9 @@ Ubuntu 26.04 / AMD / Bash, SQLite, Python, PyYAML, ROCm Runtime, PyTorch-ROCm, H
 |---|---|
 | OS | Ubuntu 26.04 |
 | Kernel | kernel 7.0.0 |
-| Python | Python 3.14.4 |
-| ROCm | ROCm 7.14 |
-| rocBLAS | rocBLAS 5.2.0 |
+| Python | Python 3.14.N (uv-managed; all benchmark venvs; same build as 24.04). System python3.14 retained for OS and setup scripts only |
+| ROCm | ROCm 10.1.0 |
+| rocBLAS | rocBLAS 5.7.0 |
 
 Runs scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stable-diffusion-xl-base-1.0; smoke uses reduced resolution and steps. image_resolution, num_images, num_inference_steps, precision, scheduler, guidance_scale, and seed come from the runner.
 
