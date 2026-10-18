@@ -35,7 +35,7 @@ sample_index,status,latency_ms,per_image_latency_sec,images_per_sec,gpu_mem_gb,s
 
 - **#1: Per-image latency** — stored as `per_image_latency_sec`.
 - **#2: Aggregate throughput** — stored as `images_per_sec`.
-- **#3: Peak VRAM** — stored as `gpu_mem_gb`.
+- **#3: Peak GPU memory, GB** — stored as `peak_gpu_memory_gb`.
 - **#4: Denoising step time per batch, ms** — stored as `step_time_ms`.
 - **#5: First-image latency, cold, ms** — stored as `first_image_latency_ms`.
 
