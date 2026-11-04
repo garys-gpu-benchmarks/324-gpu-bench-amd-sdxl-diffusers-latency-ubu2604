@@ -26,3 +26,5 @@ sweep:
     extended: 50
   guidance_scale: 0
   seed: 42
+  prompt_len: 32
+  batch_size: 1

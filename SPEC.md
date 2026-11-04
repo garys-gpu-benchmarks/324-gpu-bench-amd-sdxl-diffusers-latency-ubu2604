@@ -2,7 +2,7 @@
 
 ## Execution Description
 
-Runs scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stable-diffusion-xl-base-1.0; smoke uses reduced resolution and steps. image_resolution, num_images, num_inference_steps, precision, scheduler, guidance_scale, and seed come from the runner. This is not TorchBench run.py. Sweep dimensions: model_name, precision, scheduler, prompt_source, image_resolution, num_images, num_inference_steps, guidance_scale.
+Runs scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stable-diffusion-xl-base-1.0; smoke uses reduced resolution and steps. image_resolution, num_images, num_inference_steps, precision, scheduler, guidance_scale, and seed come from the runner. prompt_len: synthetic prompt length in words. Sweep dimensions: model_name, precision, scheduler, prompt_source, image_resolution, num_images, num_inference_steps, guidance_scale.
 
 ## Parameters
 
@@ -17,6 +17,8 @@ Runs scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stabl
 | num_inference_steps | `--num-inference-steps` | smoke=2, baseline=30, extended=50 | 30 | From Parameter list; see Execution Description With Parameters. |
 | guidance_scale | `--guidance-scale` | smoke=0, baseline=0, extended=0 | 0 | From Parameter list; see Execution Description With Parameters. |
 | seed | `--seed` | smoke=42, baseline=42, extended=42 | 42 | From Parameter list; see Execution Description With Parameters. |
+| prompt_len | `--prompt-len` | smoke=32, baseline=32, extended=32 | 32 | From Parameter list; see Execution Description With Parameters. |
+| batch_size | `--batch-size` | smoke=1, baseline=1, extended=1 | 1 | From Parameter list; see Execution Description With Parameters. |
 
 ## Invocation
 
