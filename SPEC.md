@@ -91,9 +91,9 @@ sample_index,status,latency_ms,per_image_latency_sec,images_per_sec,gpu_mem_gb,s
 
 ```bash
 bash run_benchmark.sh --help
-bash run_benchmark.sh --smoke --validate
-bash run_benchmark.sh --baseline --validate
-bash run_benchmark.sh --extended --validate
+bash run_benchmark.sh --smoke
+bash run_benchmark.sh --baseline
+bash run_benchmark.sh --extended
 ```
 `run_benchmark.sh --help` prints usage and exits. The harness calls `scripts/ensure_setup.sh` when `.setup_state` is absent.
 
