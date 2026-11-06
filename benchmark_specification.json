@@ -140,6 +140,16 @@
     "value": "-"
   },
   {
+    "field_name": "Validation Objective",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Validates SDXL latency, images/s, and peak VRAM. Smoke uses reduced resolution and steps"
+  },
+  {
+    "field_name": "Command Tools Executed",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "Run scripts/infer_sdxl.py --backend sdxl. Every profile loads real SDXL; smoke uses reduced resolution and steps"
+  },
+  {
     "field_name": "run_benchmark Command Plus Options for Smoke Run (One minute or less)",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "bash run_benchmark.sh --smoke --validate --model-name sdxl-base-1.0 --precision fp16 --scheduler euler --prompt-source synthetic --image-resolution 64 --num-images 1 --num-inference-steps 2 --guidance-scale 0 --seed 42 --prompt-len 32 --batch-size 1"
@@ -155,16 +165,6 @@
     "value": "bash run_benchmark.sh --extended --validate --model-name sdxl-base-1.0 --precision fp16 --scheduler euler --prompt-source synthetic --image-resolution 1024 --num-images 233 --num-inference-steps 50 --guidance-scale 0 --seed 42 --prompt-len 32 --batch-size 1"
   },
   {
-    "field_name": "Validation Objective",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Validates SDXL image-generation latency, images/s, and peak VRAM. Every profile loads the real SDXL pipeline; smoke uses reduced resolution and steps"
-  },
-  {
-    "field_name": "Command Tools Executed",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run scripts/infer_sdxl.py --backend sdxl. Every profile loads real SDXL; smoke uses reduced resolution and steps"
-  },
-  {
     "field_name": "Command Execution Details and Purpose",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "Run scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stable-diffusion-xl-base-1.0; smoke uses reduced resolution and steps. Parse latency_ms, images_per_sec, and gpu_mem_gb, to measure SDXL image-generation performance"
@@ -172,12 +172,12 @@
   {
     "field_name": "Command Methodology",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stable-diffusion-xl-base-1.0; smoke uses reduced resolution and steps. Parse latency, images per second, and peak VRAM. This is not TorchBench run.py"
+    "value": "Run scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stable-diffusion-xl-base-1.0; smoke uses reduced resolution and steps. Parse latency, images per second, and peak VRAM"
   },
   {
     "field_name": "Execution Description With Parameters",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Runs scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stable-diffusion-xl-base-1.0; smoke uses reduced resolution and steps. image_resolution, num_images, num_inference_steps, precision, scheduler, guidance_scale, and seed come from the runner. prompt_len: synthetic prompt length in words. batch_size: images per pipeline call. This is not TorchBench run.py. output_format: csv"
+    "value": "Runs scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stable-diffusion-xl-base-1.0; smoke uses reduced resolution and steps. image_resolution, num_images, num_inference_steps, precision, scheduler, guidance_scale, and seed come from the runner. prompt_len: synthetic prompt length in words. batch_size: images per pipeline call. output_format: csv"
   },
   {
     "field_name": "Execution Domain",
@@ -412,7 +412,7 @@
   {
     "field_name": "Profile Parameter Values",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Parameters_SmokeBaselineExtend",
-    "value": "{\"model_name\": {\"smoke\": \"sdxl-base-1.0\", \"baseline\": \"sdxl-base-1.0\", \"extended\": \"sdxl-base-1.0\", \"notes\": \"\"}, \"precision\": {\"smoke\": \"fp16\", \"baseline\": \"fp16\", \"extended\": \"fp16\", \"notes\": \"\"}, \"scheduler\": {\"smoke\": \"euler\", \"baseline\": \"euler\", \"extended\": \"euler\", \"notes\": \"\"}, \"prompt_source\": {\"smoke\": \"synthetic\", \"baseline\": \"synthetic\", \"extended\": \"synthetic\", \"notes\": \"\"}, \"image_resolution\": {\"smoke\": \"64\", \"baseline\": \"512\", \"extended\": \"1024\", \"notes\": \"\"}, \"num_images\": {\"smoke\": \"1\", \"baseline\": \"132\", \"extended\": \"233\", \"notes\": \"00_78 sibling of 124.\"}, \"num_inference_steps\": {\"smoke\": \"2\", \"baseline\": \"30\", \"extended\": \"50\", \"notes\": \"VM 2026-08-16 tiny denoiser (no cached SDXL weights) num_images=4 num_inference_steps=315000 -> 187s (3:07). Extended 1.01e6 ~10:00, not tested. 2026-08-22: real SDXL pipeline. Smoke stays 2 steps on the tiny local denoiser (no weight download). Baseline 30 and extended 50 are SDXL-typical inference steps, replacing TinyDenoiser-calibrated 315000/1010000.\"}, \"guidance_scale\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\", \"notes\": \"\"}, \"seed\": {\"smoke\": \"42\", \"baseline\": \"42\", \"extended\": \"42\", \"notes\": \"\"}, \"prompt_len\": {\"smoke\": \"32\", \"baseline\": \"32\", \"extended\": \"32\", \"notes\": \"\"}, \"batch_size\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\", \"notes\": \"\"}}"
+    "value": "{\"model_name\": {\"smoke\": \"sdxl-base-1.0\", \"baseline\": \"sdxl-base-1.0\", \"extended\": \"sdxl-base-1.0\"}, \"precision\": {\"smoke\": \"fp16\", \"baseline\": \"fp16\", \"extended\": \"fp16\"}, \"scheduler\": {\"smoke\": \"euler\", \"baseline\": \"euler\", \"extended\": \"euler\"}, \"prompt_source\": {\"smoke\": \"synthetic\", \"baseline\": \"synthetic\", \"extended\": \"synthetic\"}, \"image_resolution\": {\"smoke\": \"64\", \"baseline\": \"512\", \"extended\": \"1024\"}, \"num_images\": {\"smoke\": \"1\", \"baseline\": \"132\", \"extended\": \"233\"}, \"num_inference_steps\": {\"smoke\": \"2\", \"baseline\": \"30\", \"extended\": \"50\"}, \"guidance_scale\": {\"smoke\": \"0\", \"baseline\": \"0\", \"extended\": \"0\"}, \"seed\": {\"smoke\": \"42\", \"baseline\": \"42\", \"extended\": \"42\"}, \"prompt_len\": {\"smoke\": \"32\", \"baseline\": \"32\", \"extended\": \"32\"}, \"batch_size\": {\"smoke\": \"1\", \"baseline\": \"1\", \"extended\": \"1\"}}"
   },
   {
     "field_name": "Profile Command Authorship",
