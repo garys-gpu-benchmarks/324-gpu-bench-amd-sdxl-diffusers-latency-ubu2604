@@ -12,12 +12,11 @@ capture_benchmark_run_command_submitted "$@"
 
 usage() {
   cat <<'USAGE'
+
 Usage: bash run_benchmark.sh [OPTIONS]
 
 Workload Name:          Stable Diffusion XL Inference Baseline.
 Main Goal:              Measure SDXL image-generation performance.
-Validation Objective:   Validates SDXL latency, images/s, and peak VRAM. Smoke uses reduced
-                        resolution and steps.
 Command Tools Executed: Run scripts/infer_sdxl.py --backend sdxl. Every profile loads real SDXL;
                         smoke uses reduced resolution and steps.
 
