@@ -26,13 +26,19 @@ Profiles (default: --smoke):
   --extended                    Run extended profile
 
 Parameters (override the profile's value):
-  --model-name <value>          Model or weights identifier to load (smoke/baseline/extended: sdxl-base-1.0)
+  --model-name <value>          Model or weights identifier to load
+                                  all profiles: sdxl-base-1.0
   --precision <value>           Arithmetic or compute precision (smoke/baseline/extended: fp16)
   --scheduler <value>           Shared workload parameter (smoke/baseline/extended: euler)
-  --prompt-source <value>       Source or generation mode for input prompts (smoke/baseline/extended: synthetic)
+  --prompt-source <value>       Source or generation mode for input prompts
+                                  all profiles: synthetic
   --image-resolution <value>    Shared workload parameter (smoke 64, baseline 512, extended 1024)
   --num-images <value>          Shared workload parameter (smoke 1, baseline 132, extended 233)
-  --num-inference-steps <value> Shared workload parameter (smoke 2, baseline 30, extended 50)
+  --num-inference-steps <value>
+                                Shared workload parameter
+                                  smoke:    2
+                                  baseline: 30
+                                  extended: 50
   --guidance-scale <value>      Shared workload parameter (smoke/baseline/extended: 0)
   --seed <n>                    Random seed used for reproducibility (smoke/baseline/extended: 42)
   --prompt-len <value>          Shared workload parameter (smoke/baseline/extended: 32)
