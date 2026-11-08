@@ -15,10 +15,10 @@ usage() {
 
 Usage: bash run_benchmark.sh [OPTIONS]
 
-Workload Name:          Stable Diffusion XL Inference Baseline.
-Main Goal:              Measure SDXL image-generation performance.
-Command Tools Executed: Run scripts/infer_sdxl.py --backend sdxl. Every profile loads real SDXL;
-                        smoke uses reduced resolution and steps.
+Workload Name:          Stable Diffusion XL Inference Baseline
+Main Goal:              Measure SDXL image-generation performance
+Command Tools Executed: Run scripts/infer_sdxl.py --backend sdxl with real SDXL in every profile;
+                        smoke uses reduced resolution and steps
 
 Profiles (default: --smoke):
   --smoke                       Run smoke profile

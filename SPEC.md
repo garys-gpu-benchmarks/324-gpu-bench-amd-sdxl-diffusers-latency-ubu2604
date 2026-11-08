@@ -23,7 +23,7 @@ Runs scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stabl
 ## Invocation
 
 ```bash
-Run scripts/infer_sdxl.py --backend sdxl. Every profile loads real SDXL; smoke uses reduced resolution and steps
+Run scripts/infer_sdxl.py --backend sdxl with real SDXL in every profile; smoke uses reduced resolution and steps
 ```
 
 ## Raw Output Format
@@ -52,7 +52,7 @@ Run scripts/infer_sdxl.py --backend sdxl. Every profile loads stabilityai/stable
 ## Platform Portability
 
 - **AMD (primary):** ```bash
-Run scripts/infer_sdxl.py --backend sdxl. Every profile loads real SDXL; smoke uses reduced resolution and steps
+Run scripts/infer_sdxl.py --backend sdxl with real SDXL in every profile; smoke uses reduced resolution and steps
 ```
 - **NVIDIA:** Primary target is AMD ROCm. NVIDIA notes in this section are reference only and are not the execution path.
 

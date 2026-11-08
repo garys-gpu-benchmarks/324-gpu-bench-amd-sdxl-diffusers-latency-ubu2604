@@ -37,7 +37,7 @@
   {
     "field_name": "Command Tools Executed",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run scripts/infer_sdxl.py --backend sdxl. Every profile loads real SDXL; smoke uses reduced resolution and steps"
+    "value": "Run scripts/infer_sdxl.py --backend sdxl with real SDXL in every profile; smoke uses reduced resolution and steps"
   },
   {
     "field_name": "Metrics",
@@ -205,14 +205,14 @@
     "value": "MI300X"
   },
   {
-    "field_name": "Raw Output Format",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "infer_sdxl.py CSV, one row per image. Baseline and extended also include first_image_latency_ms"
-  },
-  {
     "field_name": "Primary Record Granularity",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "one row per generated image"
+  },
+  {
+    "field_name": "Raw Output Format",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "infer_sdxl.py CSV, one row per image. Baseline and extended also include first_image_latency_ms"
   },
   {
     "field_name": "Raw Output Example",
@@ -225,14 +225,14 @@
     "value": "latency_ms, per_image_latency_sec, images_per_sec, gpu_mem_gb, step_time_ms. Baseline and extended rows also have first_image_latency_ms"
   },
   {
-    "field_name": "Success Criteria",
-    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "status=ok and per_image_latency_sec, images_per_sec, and gpu_mem_gb are finite"
-  },
-  {
     "field_name": "Parser and Normalization Notes",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
     "value": "scheduler must be euler and prompt_source must be synthetic. first_image_latency_ms starts before from_pretrained, so it includes weight load; it is added on baseline and extended rows. Later image times start after the pipeline is loaded"
+  },
+  {
+    "field_name": "Success Criteria",
+    "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
+    "value": "status=ok and per_image_latency_sec, images_per_sec, and gpu_mem_gb are finite"
   },
   {
     "field_name": "Hardware Config",
@@ -377,7 +377,7 @@
   {
     "field_name": "Workload Command Line Executable",
     "source_file": "BenchmarkSpecDefinitions.xlsx::Workload_Definitions",
-    "value": "Run scripts/infer_sdxl.py --backend sdxl. Every profile loads real SDXL; smoke uses reduced resolution and steps"
+    "value": "Run scripts/infer_sdxl.py --backend sdxl with real SDXL in every profile; smoke uses reduced resolution and steps"
   },
   {
     "field_name": "ROCm Version",
