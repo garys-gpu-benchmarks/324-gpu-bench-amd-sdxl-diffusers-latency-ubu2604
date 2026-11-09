@@ -12,7 +12,6 @@ capture_benchmark_run_command_submitted "$@"
 
 usage() {
   cat <<'USAGE'
-
 Usage: bash run_benchmark.sh [OPTIONS]
 
 Workload Name:          Stable Diffusion XL Inference Baseline
