@@ -42,6 +42,26 @@ SDXL_HF_ID = "stabilityai/stable-diffusion-xl-base-1.0"
 SYNTHETIC_PROMPT = "a photograph of a red cube on a wooden table, studio lighting"
 
 
+def mark_measure_start() -> None:
+    """Setup ends here: record when the timed work starts (TEMPLATE_00_141).
+
+    run_benchmark.sh reads BENCHMARK_MEASURE_START_FILE when the benchmark stops and
+    starts the benchmark clock at this time, so model load and warmup count as setup.
+    The first call of a run wins. Outside run_benchmark.sh it does nothing.
+    """
+    import os
+    import time
+
+    path = os.environ.get("BENCHMARK_MEASURE_START_FILE", "")
+    if not path or os.path.exists(path):
+        return
+    try:
+        with open(path, "w", encoding="utf-8") as handle:
+            handle.write(f"{time.time_ns()}\n")
+    except OSError:
+        pass
+
+
 def sized_prompt(length: str) -> str:
     """Repeat the synthetic prompt out to prompt_len words."""
     words = SYNTHETIC_PROMPT.split()
@@ -186,6 +206,7 @@ def run_tiny(
     dt = 1.0 / steps
     rows: list[dict[str, object]] = []
     first_latency_ms = 0.0
+    mark_measure_start()  # setup ends: model loaded, warmup done
     with torch.no_grad():
         for image_index in range(num_images):
             latents = torch.randn(1, LATENT_CHANNELS, resolution, resolution, device=device, dtype=dtype)
@@ -316,6 +337,7 @@ def run_sdxl(
     if torch.cuda.is_available():
         torch.cuda.reset_peak_memory_stats(device)
 
+    mark_measure_start()  # setup ends: model loaded, warmup done
     # #4 Denoising step time: diffusers calls this at the end of every
     # denoising step. The time between the first and last call, divided by the
     # intervals, is scheduler + UNet time for one step of the whole batch,
