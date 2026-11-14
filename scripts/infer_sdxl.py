@@ -18,10 +18,24 @@ import io
 import math
 import os
 import time
+import warnings
 from pathlib import Path
+
+# Quiet library output. These were printed on every run: "Loading weights" bars,
+# transformers' torchvision fallback notes, diffusers' FutureWarnings (torch_dtype,
+# upcast_vae) and six "modules in AutoencoderKL that should be kept in float32"
+# warnings. The settings are read when the libraries are imported, so they come
+# first. Errors and tracebacks still print.
+os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
+os.environ.setdefault("TRANSFORMERS_VERBOSITY", "error")
+os.environ.setdefault("DIFFUSERS_VERBOSITY", "error")
 
 import torch
 import torch.nn as nn
+
+# diffusers' deprecation notices (torch_dtype, upcast_vae) are FutureWarnings
+# raised when diffusers is used; it is imported later, inside the functions.
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 
 SDXL_HF_ID = "stabilityai/stable-diffusion-xl-base-1.0"
@@ -250,6 +264,9 @@ def run_sdxl(
 ) -> tuple[list[dict[str, object]], dict[str, float]]:
     cold_start = time.perf_counter()
     from diffusers import EulerDiscreteScheduler, StableDiffusionXLPipeline
+    from diffusers.utils import logging as diffusers_logging
+
+    diffusers_logging.disable_progress_bar()  # "Loading pipeline components..." (no env switch)
 
     if scheduler_name.lower() != "euler":
         raise SystemExit("[FAIL] scheduler must remain euler for this workload.")
