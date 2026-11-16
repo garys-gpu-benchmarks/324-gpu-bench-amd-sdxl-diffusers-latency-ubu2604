@@ -45,6 +45,7 @@ Parameters (override the profile's value):
 
 General options:
   --config <file>               Config file (default: config/benchmark_config.yaml)
+  --repeat <n>                  Run the selected profiles n times, in order (default: 1)
   --quiet                       Suppress nonessential stdout
   --log-level <level>           ERROR|WARN|INFO|DEBUG (default: INFO; DEBUG also prints [RUN] commands)
   --specification               Print this workload's specification and exit
@@ -115,7 +116,7 @@ bash scripts/ensure_setup.sh
 mark_benchmark_measure_start
 export PATH="/opt/rocm/bin:${PATH}"
 PYTHON_BIN="${REPO_ROOT}/.venv/bin/python"
-[[ -x "${PYTHON_BIN}" ]] || die "Missing ${PYTHON_BIN}; run setup.sh first."
+[[ -x "${PYTHON_BIN}" ]] || die "Missing ${PYTHON_BIN}; run run_setup.sh first."
 
 yaml_get() {
   "${PYTHON_BIN}" - "${CONFIG_FILE}" "${PROFILE}" "$1" <<'PY'
